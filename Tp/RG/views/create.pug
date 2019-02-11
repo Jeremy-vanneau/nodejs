@@ -1,0 +1,21 @@
+doctype html  
+html(lang='en')  
+    head
+        
+    body
+        h1 Créer un personnage
+        form(method="POST" action="/butonCreate")
+            label(for="") Nom de votre personnage
+            input(type="text", name="nom")
+            hr
+            label(for="") Classe de votre personnage
+            input(type="text", name="classe")
+            hr
+            label(for="") Santé
+            input(type="number", name="sante")
+            hr
+            label(for="") Arme 
+            input(type="text", name="arme")
+            hr
+            input(type="submit", value="Creer") 
+a(href="http://127.0.0.1:3010") Retour

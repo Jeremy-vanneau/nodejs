@@ -1,0 +1,16 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Upload a file</title>
+	</head>
+	<body>
+		<h3>Sélectionner un fichier à uploader :</h3>
+		<br/>
+		<form action="http://127.0.0.1:3000/file_upload" method="POST" enctype="multipart/form-data">
+			<input type="file" name="inputFile" size="50"/>
+			<br/>
+			<input type="submit" value="Upload File"/>
+		</form>
+	</body>
+</html>

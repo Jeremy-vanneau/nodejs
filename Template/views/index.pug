@@ -1,0 +1,14 @@
+doctype html  
+html(lang='en')  
+    head
+        Pug Example
+    body
+        h1 #{title}
+        div.container
+        p= name
+        p= message.toUpperCase()
+
+        if name != null
+            img(src=imgSrc)
+        else
+            p General Kenobi !

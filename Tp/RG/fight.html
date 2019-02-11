@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Combat</title>
+    <style>
+        #zone_chat strong {
+            color: white;
+            background-color: black;
+            padding: 2px;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <form action=""  id="form_attaque">
+        <input type="hidden" type="text" name="message" id="message"size="50" autofocus />
+        <input type="submit" id="button" value="Attaque" />
+    </form>
+    <form action=""  id="form_defense">
+        <input type="hidden" type="text" name="message" id="message"size="50" autofocus />
+        <input type="submit" id="button" value="Defense" />
+    </form>
+    <form action=""  id="form_soin">
+        <input type="hidden" type="text" name="message" id="message"size="50" autofocus />
+        <input type="submit" id="button" value="Soin" />
+    </form>
+    
+    <section id="zone_chat">
+        
+    </section>
+    
+    
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var socket = io();
+        
+        // Connexion à socket.io
+        //var socket = io.connect('http://localhost:3010');
+        
+        // On demande le pseudo, on l'envoie au serveur et on l'affiche dans le titre
+        var pseudo = prompt('Quel est votre pseudo ?');
+        socket.emit('nouveau_client', pseudo);
+        document.title = pseudo + ' - ' + document.title;
+        
+        socket.on('nouveau_client', function(pseudo) {
+            $('#zone_chat').prepend('<p><em>' + pseudo + ' a rejoint le Combat !</em></p>');
+        })
+        
+
+        // Quand on reçoit un message, on l'insère dans la page
+        socket.on('message', function(data) {
+            insereMessage(data.pseudo, data.message)
+        })
+        
+        // Quand un nouveau client se connecte, on affiche l'information
+       
+        // Lorsqu'on envoie le formulaire, on transmet le message et on l'affiche sur la page
+        $('#form_attaque').submit(function () {
+            //var message = $('#message').val();
+            console.log("attaque");
+            socket.emit('message','Attaque');// Transmet le message aux autres
+            insereMessage(pseudo, message); // Affiche le message aussi sur notre page
+            $('#message').val('').focus(); // Vide la zone de Chat et remet le focus dessus
+            return false; // Permet de bloquer l'envoi "classique" du formulaire
+        });
+
+        $('#form_defense').submit(function () {
+            //var message = $('#message').val();
+            console.log("defense");
+            socket.emit('message','Se défend');// Transmet le message aux autres
+            insereMessage(pseudo, message); // Affiche le message aussi sur notre page
+            $('#message').val('').focus(); // Vide la zone de Chat et remet le focus dessus
+            return false; // Permet de bloquer l'envoi "classique" du formulaire
+        });
+
+        $('#form_soin').submit(function () {
+            //var message = $('#message').val();
+            console.log("soins");
+            socket.emit('message','Se soigne');// Transmet le message aux autres
+            insereMessage(pseudo, message); // Affiche le message aussi sur notre page
+            $('#message').val('').focus(); // Vide la zone de Chat et remet le focus dessus
+            return false; // Permet de bloquer l'envoi "classique" du formulaire
+        });
+
+        // Ajoute un message dans la page
+        function insereMessage(pseudo, message) {
+            $('#zone_chat').prepend('<p><strong>' + pseudo + '</strong> ' + 'Attaque' + '</p>');
+        }
+        
+        
+        // Quand on reçoit un message, on l'insère dans la page
+        // socket.on('message1', function(data) {
+        //     insereMessage(data.pseudo, data.message)
+        // })
+
+        // Lorsqu'on envoie le formulaire, on transmet le message et on l'affiche sur la page
+        // $('#formulaire_chat').submit(function () {
+        //     var message = $('#message1').val();
+        //     socket.emit('message1', message);// Transmet le message aux autres
+        //     insereMessage(pseudo, message); // Affiche le message aussi sur notre page
+        //     $('#message1').val('').focus(); // Vide la zone de Chat et remet le focus dessus
+        //     return false; // Permet de bloquer l'envoi "classique" du formulaire
+        // });
+        
+        // // Ajoute un message dans la page
+        // function insereMessage(pseudo, message) {
+        //     $('#zone_chat').prepend('<p><strong>' + pseudo + '</strong> ' + 'Defense' + '</p>');
+        // }
+        
+    </script>
+
+    
+
+    
+</body>
+</html>
+

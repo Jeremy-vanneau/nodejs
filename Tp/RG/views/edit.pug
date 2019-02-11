@@ -1,0 +1,51 @@
+doctype html  
+html(lang='en')  
+    head
+        
+    body
+        h1 Modifier un personnage
+
+        table
+            tr
+                th Nom du personnage
+                td #{nom}
+            tr
+                th Classe du personnage 
+                td #{classe}
+            tr
+                th Sante
+                td #{sante}
+            tr
+                th arme
+                td #{arme}
+            tr
+            tr
+                th ID
+                td #{ID}
+            tr
+
+        br
+        br
+
+        form(method="POST" action="/butonEdit")
+            label(for="") ID du personnage à modifier
+            input(type="number", name="ID")
+            hr
+            label(for="") Nom
+            input(type="text", name="nom")
+            label(for="") laisser vide pour ne rien changer
+            hr
+            label(for="") Classe
+            input(type="text", name="classe")
+            label(for="") laisser vide pour ne rien changer
+            hr
+            label(for="") Santé
+            input(type="number", name="sante")
+            label(for="") laisser vide pour ne rien changer
+            hr
+            label(for="") Arme 
+            input(type="text", name="arme")
+            label(for="") laisser vide pour ne rien changer
+            hr
+            input(type="submit", value="Modifier") 
+a(href="http://127.0.0.1:3010") Retour

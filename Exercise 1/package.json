@@ -1,0 +1,15 @@
+{
+  "name": "exo",
+  "version": "1.0.0",
+  "main": "exo1.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node exo.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "file-system": "^2.2.2"
+  }
+}

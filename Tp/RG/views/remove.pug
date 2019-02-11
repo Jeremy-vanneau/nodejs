@@ -1,0 +1,36 @@
+doctype html  
+html(lang='en')  
+    head
+        
+    body
+        h1 supprimer un personnage
+
+        table
+            tr
+                th Nom du personnage
+                td #{nom}
+            tr
+                th Classe du personnage 
+                td #{classe}
+            tr
+                th Sante
+                td #{sante}
+            tr
+                th arme
+                td #{arme}
+            tr
+            tr
+                th ID
+                td #{ID}
+            tr
+
+        br
+        br
+
+        form(method="POST" action="/butonRemove")
+            label(for="") ID du personnage à supprimer
+            input(type="number", name="ID")
+            hr
+            input(type="submit", value="Supprimer") 
+
+a(href="http://127.0.0.1:3010") Retour

@@ -1,0 +1,41 @@
+doctype html  
+html(lang='en')  
+    head
+        
+    body
+        h1 Bienvenu
+
+        hr
+
+        h2 Liste des personnages
+
+        table
+            tr
+                th Nom du personnage
+                td #{nom}
+            tr
+                th Classe du personnage 
+                td #{classe}
+            tr
+                th Sante
+                td #{sante}
+            tr
+                th arme
+                td #{arme}
+            tr
+        
+        
+        hr
+       
+        ul
+        li
+            a(href="http://127.0.0.1:3010/create") Créer un personnage
+        li 
+            a(href="http://127.0.0.1:3010/edit") Modifier un personnage
+        li
+            a(href="http://127.0.0.1:3010/remove") Supprimer un personnage      
+        li
+            a(href="http://127.0.0.1:3010/fight") combat
+
+
+
